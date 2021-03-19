@@ -1,7 +1,7 @@
 # COMP2113-Project
 
 ## Group Information
-**Group Number **: 56
+**Group Number**: 56
 **Name**: Tsz Yi Lam 3035704825
 **Name**: Kin Shing Wong 
 
