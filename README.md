@@ -42,6 +42,12 @@ The player, playing as a prince, would defeat monsters to get the prince leveled
 - The inventory size would be dynamic.
 - The drop item amount after each defeat of monster would be dynamic.
 
+### File input/output
+- saving game status.
+- loading game status.
+- load monsters' attributes.
+- load boss' attributes.
+
 ### Program codes in multiple files
 - the main.cpp would be contain main function.
 - the battle.cpp would be used to deploy the battling system.
