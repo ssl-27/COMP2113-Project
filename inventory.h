@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
-
+using namespace std;
 
 
 struct inventory_item{
@@ -9,6 +9,7 @@ struct inventory_item{
     string name;
     double effect;
     bool mounted;
+    bool owned;
 };
 
 vector <inventory_item> items;
@@ -17,31 +18,48 @@ inventory_item input;
 void printinventory(int printMode){
     vector<inventory_item>::iterator iter;
     if (printMode == 0){
-        cout << "Your items: " << endl;
+        cout << "Your owned items: " << endl;
+        int ownedcounter = 0;
         for (iter = items.begin(); iter != items.end(); iter++){
-            string type_name;
-            if (iter->type == 0){
-                type_name = "Attack";
+            if (iter->owned == 1){
+                ownedcounter += 1;
+                string type_name;
+                if (iter->type == 0){
+                    type_name = "Attack";
+                }
+                else if (iter->type == 1){
+                    type_name = "Shield";
+                }
+                else if (iter->type == 2){
+                    type_name = "HP armor";
+                }
+                cout << iter->id << ' ' << iter->name << " Type: " << type_name << endl;
             }
-            else if (iter->type == 1){
-                type_name = "Shield";
-            }
-            else if (iter->type == 2){
-                type_name = "HP armor";
-            }
-            cout << iter->id << ' ' << iter->name << " Type: " << type_name <<iter->mounted<< endl;
-        }  
+        }
+        if (ownedcounter == 0){
+            cout << "No owned items! " <<endl;
+        }
     }
     else if (printMode == 1){
         cout << "Your mounted items: " << endl;
-        int counter = 0;
+        int mountedcounter = 0;
         for (iter = items.begin(); iter != items.end(); iter++){
             if (iter->mounted == 1){
-                counter += 1;
-                cout << iter->id << ' ' << iter->name << endl;
+                mountedcounter += 1;
+                string type_name;
+                if (iter->type == 0){
+                    type_name = "Attack";
+                }
+                else if (iter->type == 1){
+                    type_name = "Shield";
+                }
+                else if (iter->type == 2){
+                    type_name = "HP armor";
+                }
+                cout << iter->id << ' ' << iter->name << " Type: " << type_name << endl;
             }
         }
-        if (counter == 0){
+        if (mountedcounter == 0){
             cout << "No mounted items! " <<endl;
         }
     }
@@ -59,17 +77,17 @@ void readInventory(){
     }
 
     while (inventories.eof() != 1){
-        inventories >> input.id >> input.type >> input.name >> input.effect >> input.mounted;
+        inventories >> input.id >> input.type >> input.name >> input.effect >> input.mounted >> input.owned;
         items.push_back(input);
     }
     
     inventories.close();
     items.pop_back();
-    printinventory(0);
+
 }
 
 void writeInventory(){
-    fstream inventories;
+    ofstream inventories;
     inventories.open("inventory.txt");
     if (inventories.fail()){
         cout << "Error in file opening!" << endl;
@@ -77,7 +95,7 @@ void writeInventory(){
     }
     vector<inventory_item>::iterator iter;     
     for ( iter = items.begin(); iter != items.end(); iter++)   {
-        inventories << iter->id << "    " << iter->type << "    " << iter->name << "    " << iter->effect << "    " << iter->mounted << "\n";
+        inventories << iter->id << "    " << iter->type << "    " << iter->name << "    " << iter->effect << "    " << iter->mounted << "    " << iter->owned <<"\n";
     } 
     inventories.close();
 
@@ -175,7 +193,7 @@ void equipitems(){
 void inventory(){
     int choice;
     readInventory();
-    cout << "1. See all items" << endl;
+    cout << "1. See all owned items" << endl;
     cout << "2. See mounted items" << endl;
     cout << "3. Equip items" << endl;
     cout << "4. Unmount items" << endl;
