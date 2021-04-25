@@ -1,7 +1,7 @@
 #include <fstream>
 #include <vector>
 using namespace std;
-
+//initalize a data structure storing player's attack denfense and health points and the level
 struct player
 {
     int level;
