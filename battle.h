@@ -105,7 +105,7 @@ bool battle(int monster_id, player withItems){
             damage (pdamage, mdamage, mHp, pHp);
         }
         //both side decide to defense, so no damage
-        else if (pAtkdef == 0 && mAtkdef == 0)
+        else if (pAtkdef == 2 && mAtkdef == 2)
         {
             mdamage = 0;
             pdamage = 0;
