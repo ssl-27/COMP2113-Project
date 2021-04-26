@@ -115,6 +115,9 @@ bool battle(int monster_id, player withItems){
             printChoice(mAtkdef);            
             mdamage = 0;
             pdamage = mAtk - pDef;
+            if (pdamage < 0){
+                pdamage = 0;
+            }
             damage (pdamage, mdamage, mHp, pHp);
         }
         //this case player side will take the damage by player minus monster defense value
@@ -123,6 +126,9 @@ bool battle(int monster_id, player withItems){
             printChoice(mAtkdef);            
             mdamage = pAtk - mDef;
             pdamage = 0;
+            if (mdamage < 0){
+                mdamage = 0;
+            }
             damage (pdamage, mdamage, mHp, pHp);
         }
 
