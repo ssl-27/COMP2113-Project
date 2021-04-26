@@ -33,23 +33,29 @@ The player, playing as a prince, would defeat monsters to get the prince leveled
 - Drop items are generated in random.
 
 ### Data structures for storing game status
-- Array would be used to store the drop items.
-- Array would be used to store prince's inventory.
-- Array would be used to store ID of different monsters.
-- Array would be used to store ID of different boss.
+- Vector are used to store the drop items.
+- Vector are used to store prince's inventory.
+- Vector are used to store ID of different monsters.
+- Vector are used to store ID of different boss.
+- Structs are used to hold items in the vector.
+- Structs are used to store player's status.
 
 ### Dynamic memory management
 - The inventory size would be dynamic.
-- The drop item amount after each defeat of monster would be dynamic.
 
 ### File input/output
-- saving game status.
-- loading game status.
+- saving player's stats.
+- loading player's status.
+- saving player's inventory.
+- loading player's inventory
 - load monsters' attributes.
 - load boss' attributes.
 
 ### Program codes in multiple files
 - the main.cpp would be contain main function.
-- the battle.cpp would be used to deploy the battling system.
-- the gameFunctions.cpp would be used to manipulate other functions in the game.
+- the battle.h is used to load battle-related functions in the game.
+- inventory.h is used to load inventory-related functions of the game.
+- playerstatus.h us used to load player status-related functions of the game.
+- randomMonster.h is used to load random monster id.
+- headers.h is used to load Necessary headers for the files.
 
