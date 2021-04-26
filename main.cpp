@@ -27,10 +27,16 @@ int main(){
     cin >> choice;
     while (choice !=0 ){
         if (choice == 1){
-            cout << battle(randomMonster(), withItems) << endl;
+            if(battle(randomMonster(), withItems) == true){
+                levelUp(10);
+                dropinventory();
+            }
         }
         else if (choice == 2 ){
-            cout << battle(100, withItems) << endl;
+            if(battle(100, withItems) == true){
+                levelUp(100);
+                cout << "Bonnie Saved!" << endl;
+            }
         }
         else if (choice == 3){
             cout << "" << endl;

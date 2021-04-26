@@ -1,7 +1,6 @@
-1    0    Excalibur    1    0   0
-2    0    Ascalon    2    0 0
-3    1    Aegis    1    0   0
-4    1    Ancile    2    0  0
-5    2    Beowulf    1    0 0
-6    2    Kavacha    2    0 0
-
+1    0    Excalibur    1    0    0
+2    0    Ascalon    2    0    0
+3    1    Aegis    1    0    0
+4    1    Ancile    2    0    0
+5    2    Beowulf    1    0    0
+6    2    Kavacha    2    0    0

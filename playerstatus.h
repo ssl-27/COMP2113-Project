@@ -47,7 +47,6 @@ void printUserInfo(player type){
     cout << "Attack: " << type.atk << endl;
     cout << "Defence: " << type.def << endl;
     cout << "HP: " << type.hp << endl;
-    cout << "Experience: " << type.exp << endl;
     cout << "" << endl;
     
 }
@@ -77,6 +76,38 @@ void compileUser(){
         }
     }
     
+}
+
+void writeUser(){
+    ofstream user;
+    user.open("playerstat.txt");
+
+    if (user.fail()){
+        cout << "Error opening file!";
+        exit(1);
+    }
+
+    user << base.level << " " << base.atk << " " << base.def << "   " << base.hp << " " << base.exp;
+    user.close();
+}
+
+void levelUp(int amount){
+    getUserInfo();
+    float levelupamount = base.level * 1000;
+    float toAdd = base.level * (1 + amount );
+    base.exp += toAdd;
+
+    if (base.exp >= levelupamount){
+        base.level += 1;
+        base.hp *= 1.1;
+        base.atk *= 1.1;
+        base.def *= 1.1;
+        cout << "You have leveled up! These are your new stats: " << endl;
+        printUserInfo (base);
+    }
+
+    writeUser();
+
 }
 
 
