@@ -29,11 +29,17 @@ int main(){
     while (choice !=0 ){
         if (choice == 1){
             //jump to the battle function which generate monster
-            cout << battle(randomMonster(), withItems) << endl;
+            if(battle(randomMonster(), withItems) == true){        
+                levelUp(10);
+                dropinventory();
+            }
         }
+          //jump to the battle with the boss
         else if (choice == 2 ){
-            //jump to the battle with the boss
-            cout << battle(100, withItems) << endl;
+            if(battle(100, withItems) == true){
+                levelUp(100);
+                cout << "Bonnie Saved!" << endl;
+            }
         }
         else if (choice == 3){
             // jump to the display inventory function

@@ -1,5 +1,7 @@
 #include <vector>
 #include <string>
+#include <time.h>
+#include <stdlib.h>
 #include <fstream>
 using namespace std;
 
@@ -102,7 +104,11 @@ void writeInventory(){
     ofstream inventories;
     //open the file inventory.txt
     inventories.open("inventory.txt");
+    //clear all existed data
+    inventories.clear();
+
     //output error message in case cannot read the file
+
     if (inventories.fail()){
         cout << "Error in file opening!" << endl;
         exit(1);
@@ -227,7 +233,19 @@ void equipitems(){
 
 }
 
-
+void dropinventory(){
+    srand(time(NULL));
+    int inventoryid = rand()%6 + 1;
+    vector <inventory_item>:: iterator dropiter;
+    for (dropiter = items.begin(); dropiter != items.end(); dropiter++){
+        if (inventoryid == dropiter->id){
+            dropiter->owned = 1;
+            cout << "You are awarded with " << dropiter->name <<"! " << endl;
+            cout << "It is added into your inventory! " <<endl;            
+        }
+    }
+    writeInventory();
+}
 
 
 void inventory(){

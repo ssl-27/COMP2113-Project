@@ -1,5 +1,8 @@
 #include "headers.h"
 #include <fstream>
+#include <time.h>
+#include <stdlib.h>
+
 
 
 //create a data structure which consist of the monster's basic data
@@ -48,8 +51,20 @@ void damage(float pdamage, float mdamage, float &mHp, float &pHp){
         mHp -= mdamage;
 }
 
+void printChoice(int choice){
+    if (choice == 1){
+        cout << "Attack" << endl;
+    }
+    else {
+        cout << "Defence" << endl;
+    }
+}
+
+
+
 bool battle(int monster_id, player withItems){
     readMonster();
+    srand(time(NULL));
     monster battleMonster;
     //use for loop to search for the target monster retrieved from the monster file
     for (monsteriter = monsterInfo.begin(); monsteriter != monsterInfo.end(); monsteriter++){
@@ -88,25 +103,34 @@ bool battle(int monster_id, player withItems){
         mAtkdef = rand()%2 + 1;
         //Illustrate different situation of the battle
         if (pAtkdef == 1 && mAtkdef == 1){
+            printChoice(pAtkdef);
+            printChoice(mAtkdef);
             pdamage = mAtk;
             mdamage = pAtk;
             damage (pdamage, mdamage, mHp, pHp);
         }
         //this case player side will take the damage by monster minus player defense value
         else if (pAtkdef == 2 && mAtkdef == 1){
+            printChoice(pAtkdef);
+            printChoice(mAtkdef);            
             mdamage = 0;
             pdamage = mAtk - pDef;
             damage (pdamage, mdamage, mHp, pHp);
         }
         //this case player side will take the damage by player minus monster defense value
         else if (pAtkdef == 1 && mAtkdef == 2){
+            printChoice(pAtkdef);
+            printChoice(mAtkdef);            
             mdamage = pAtk - mDef;
             pdamage = 0;
             damage (pdamage, mdamage, mHp, pHp);
         }
+
         //both side decide to defense, so no damage
         else if (pAtkdef == 2 && mAtkdef == 2)
         {
+            printChoice(pAtkdef);
+            printChoice(mAtkdef);            
             mdamage = 0;
             pdamage = 0;
             damage (pdamage, mdamage, mHp, pHp);
