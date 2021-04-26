@@ -1,4 +1,4 @@
-//this file must be named makefile
+##this file must be named makefile
 
 .PHONY: clean
 clean:
