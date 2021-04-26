@@ -12,6 +12,7 @@ using namespace std;
 
 int main(){
     int choice;
+    //File input/output (e.g., for loading/saving game status)
     getMounted();
     getUserInfo();
     compileUser();
@@ -29,8 +30,10 @@ int main(){
     while (choice !=0 ){
         if (choice == 1){
             //jump to the battle function which generate monster
+            //Generation of random game sets or events
             if(battle(randomMonster(), withItems) == true){        
                 levelUp(10);
+                //Dynamic memory management(inventory)
                 dropinventory();
             }
         }
