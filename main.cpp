@@ -15,7 +15,7 @@ int main(){
     getMounted();
     getUserInfo();
     compileUser();
-
+// start menu for the game
     cout << "Save my Bonnie. Be the hero kid. " << endl;
     cout << "Main menu: " << endl;
     cout << "1. Search for mobs." << endl;
@@ -25,20 +25,26 @@ int main(){
     cout << "0. Exit." << endl;
     cout << "Your choice? ";
     cin >> choice;
+    //use while loop to read the instruction, stops until "0" is inputed
     while (choice !=0 ){
         if (choice == 1){
+
+        //jump to the battle function which generate monster
             if(battle(randomMonster(), withItems) == true){
                 levelUp(10);
                 dropinventory();
             }
         }
         else if (choice == 2 ){
+          //jump to the battle with the boss
             if(battle(100, withItems) == true){
                 levelUp(100);
                 cout << "Bonnie Saved!" << endl;
             }
+
         }
         else if (choice == 3){
+            // jump to the display inventory function
             cout << "" << endl;
             inventory();
         }
@@ -49,6 +55,7 @@ int main(){
             printUserInfo(withItems);
         }
         else {
+            //verifcation for the input
             cout << "Wrong command!" << endl;
         }
         cout << "Main menu: " << endl;
