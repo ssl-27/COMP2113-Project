@@ -1,3 +1,5 @@
+//this file must be named makefile
+
 .PHONY: clean
 clean:
 	rm -f main main.o
