@@ -57,3 +57,5 @@ The player, playing as a prince, would defeat monsters to get different items. W
 - randomMonster.h is used to load random monster id.
 - headers.h is used to load Necessary headers for the files.
 
+## Remarks
+- As the code involves random inputs and outpus, it is hard to make an sample nd output file. Sorry for the inconvenience caused.
