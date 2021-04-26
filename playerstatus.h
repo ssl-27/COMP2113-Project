@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 //initalize a data structure storing player's attack denfense and health points and the level
+//Data structures for storing game status
 struct player
 {
     int level;
